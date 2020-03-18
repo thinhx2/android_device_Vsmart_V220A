@@ -17,15 +17,18 @@
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk)
 
-# Get non-open-source specific aspects
-$(call inherit-product-if-exists, vendor/Vsmart/V220A/V220A-vendor.mk)
-
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
     $(LOCAL_PATH)/overlay-lineage
 
 include vendor/mediatek/hardware/telephony-ext/overlay.mk
+
+# Properties
+PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
+
+# VNDK
+PRODUCT_TARGET_VNDK_VERSION := 27
 
 # A/B
 AB_OTA_UPDATER := false
@@ -68,3 +71,7 @@ PRODUCT_BOOT_JARS += \
 # Trust HAL
 PRODUCT_PACKAGES += \
     lineage.trust@1.0-service
+
+# VNDK-SP
+PRODUCT_PACKAGES += \
+    vndk-sp

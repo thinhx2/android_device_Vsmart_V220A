@@ -84,5 +84,3 @@ PRODUCT_TARGET_VNDK_VERSION := 27
 PRODUCT_EXTRA_VNDK_VERSIONS := 27
 TARGET_CUSTOM_LDCONFIG_TEMPLATE_27 := $(DEVICE_PATH)/configs/ld.config.txt
 DEVICE_FRAMEWORK_MANIFEST_FILE += $(DEVICE_PATH)/framework_manifest.xml
-
--include vendor/Vsmart/V220A/BoardConfigVendor.mk
