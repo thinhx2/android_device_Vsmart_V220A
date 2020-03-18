@@ -1,0 +1,17 @@
+on init
+    setprop sys.usb.ffs.aio_compat 1
+    setprop persist.adb.nonblocking_ffs 0
+    setprop ro.adb.nonblocking_ffs 0
+    setprop persist.sys.usb.config adb
+
+on fs
+    mount none /system/lib/libcam.camadapter.so /vendor/lib/libcam.camadapter.so bind
+    mount none /system/etc/media_codecs_mediatek_video.xml /vendor/etc/media_codecs_mediatek_video.xml bind
+
+on post-fs-data
+    exec -- /system/bin/init.wifi.mt6739.sh
+
+on zygote-start
+    # Re-mount our bind mounts due to Magisk starting in `post-fs-data`
+    mount none /system/lib/libcam.camadapter.so /vendor/lib/libcam.camadapter.so bind
+    mount none /system/etc/media_codecs_mediatek_video.xml /vendor/etc/media_codecs_mediatek_video.xml bind
