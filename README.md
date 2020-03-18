@@ -1,0 +1,1 @@
+# android_device_Vsmart_V220A
